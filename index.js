@@ -26,6 +26,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
   try {
     event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
   } catch (err) {
+    console.log("err:",err)
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
@@ -63,5 +64,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
   response.status(200).json({ 'msg': 'success','data':data })
 });
 
-console.log("Version 2.0")
+console.log("Version 2.1")
 app.listen(4242, () => console.log('Running on port 4242'));
+
+//curl --request POST --url "https://stripeexperiments.onrender.com/webhook" --header "Content-Type: application/json" --data "{\"param1\":\"param1\",\"param2\":\"two\"}"
