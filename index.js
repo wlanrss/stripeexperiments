@@ -11,7 +11,7 @@
 // 3) Run the server on http://localhost:4242
 //   node server.js
 
-const stripe = require('stripe');
+const stripe = require('stripe')("sk_test_51MR18oIyvXHrTx9wbqIafpykpzCAHutMzR3f8vc81xoJ4msicn7OZiozJhjY1QR1SgAErYGAxjTrpSv7D17tpB3B00atgHO9s2");
 const express = require('express');
 const app = express();
 
