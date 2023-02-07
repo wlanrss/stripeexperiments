@@ -59,7 +59,8 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
 
   console.log("event:",event.data.object)
   // Return a 200 response to acknowledge receipt of the event
-  response.send();
+  //response.send();
+  response.status(200).json({ 'msg': 'success','data':data })
 });
 
 app.listen(4242, () => console.log('Running on port 4242'));
