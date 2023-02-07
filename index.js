@@ -57,6 +57,7 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
       console.log(`Unhandled event type ${event.type}`);
   }
 
+  console.log("event:",event.data.object)
   // Return a 200 response to acknowledge receipt of the event
   response.send();
 });
