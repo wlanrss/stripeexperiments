@@ -1,0 +1,28 @@
+{
+  "name": "stripeexperiments",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "echo  build complete..",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wlanrss/stripeexperiments.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wlanrss/stripeexperiments/issues"
+  },
+  "homepage": "https://github.com/wlanrss/stripeexperiments#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.20",
+    "stripe": "^11.9.1"
+  }
+}
