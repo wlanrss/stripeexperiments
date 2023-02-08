@@ -87,6 +87,7 @@ app.use(express.json({
   limit: '5mb',
   verify: (req, res, buf) => {
     req.rawBody = buf.toString();
+    console.log("inside use:",req)
   }
 }));
 
