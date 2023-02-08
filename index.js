@@ -27,6 +27,11 @@ app.use(express.json({
   }
 }));
 
+app.get("/",(rep,res) =>{
+
+    res.send("Hello World")
+})
+
 app.post('/hooks', express.raw({type: 'application/json'}), (request, response) => {
   const sig = request.headers['stripe-signature'];
 
