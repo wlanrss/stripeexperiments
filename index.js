@@ -10,14 +10,17 @@
 //
 // 3) Run the server on http://localhost:4242
 //   node server.js
-var strsec = process.env("str_sec")
+require("dotenv").config();
+var strsec = process.env.str_sec;
+
 const stripe = require('stripe')(strsec);
 const express = require('express');
 const app = express();
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 //const endpointSecret = "whsec_sjDHnSK93FK8TnrUpCJHtL3WZWXJwYnw";   
-var endsec = process.env("end_sec")
+var endsec = process.env.end_sec;
+
 const endpointSecret = endsec
 //we_1MYwjsIyvXHrTx9w6yB1iLnY
 
