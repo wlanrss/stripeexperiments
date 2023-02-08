@@ -38,7 +38,7 @@ app.post('/hooks', express.raw({type: 'application/json'}), (request, response) 
   let event;
   //console.log("webhook:",sig)
   console.log("/hooks")
-  res.send("hooks status")
+  response.send("hooks status")
   return;
   try {
    // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
