@@ -23,15 +23,11 @@ var endsec = process.env.end_sec;
 
 const endpointSecret = endsec
 //we_1MYwjsIyvXHrTx9w6yB1iLnY
+//
+//console.log("strsec:"+strsec)
+//console.log("endsec:"+endsec)
 
-console.log("strsec:"+strsec)
-console.log("endsec:"+endsec)
-app.use(express.json({
-  limit: '5mb',
-  verify: (req, res, buf) => {
-    req.rawBody = buf.toString();
-  }
-}));
+
 
 app.get("/",(rep,res) =>{
 
@@ -86,6 +82,13 @@ app.post('/hooks', express.raw({type: 'application/json'}), (request, response) 
   //response.send();
   response.status(200).json({ 'msg': 'success','data':data })
 });
+
+app.use(express.json({
+  limit: '5mb',
+  verify: (req, res, buf) => {
+    req.rawBody = buf.toString();
+  }
+}));
 
 console.log("Version 2.1")
 app.listen(5000, () => console.log('Running on port 5000'));
