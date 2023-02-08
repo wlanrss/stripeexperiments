@@ -85,7 +85,7 @@ app.post('/hooks', express.raw({type: 'application/json'}), (request, response) 
   console.log("event:",event.data.object)
   // Return a 200 response to acknowledge receipt of the event
   //response.send();
-  response.status(200).json({ 'msg': 'success','data':data })
+  response.status(200).json({ 'msg': 'success','data':event.data.object })
 });
 
 
