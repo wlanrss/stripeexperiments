@@ -16,7 +16,8 @@ const express = require('express');
 const app = express();
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-const endpointSecret = "whsec_sjDHnSK93FK8TnrUpCJHtL3WZWXJwYnw";                        
+//const endpointSecret = "whsec_sjDHnSK93FK8TnrUpCJHtL3WZWXJwYnw";   
+const endpointSecret = "whsec_b0c25288540378e3bc3c1615f3fbdfc777fe65906a23b47c959dc4000a90f21e"
 //we_1MYwjsIyvXHrTx9w6yB1iLnY
 
 app.use(express.json({
@@ -26,7 +27,7 @@ app.use(express.json({
   }
 }));
 
-app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+app.post('/hooks', express.raw({type: 'application/json'}), (request, response) => {
   const sig = request.headers['stripe-signature'];
 
   let event;
@@ -75,6 +76,6 @@ app.post('/webhook', express.raw({type: 'application/json'}), (request, response
 });
 
 console.log("Version 2.1")
-app.listen(4242, () => console.log('Running on port 4242'));
+app.listen(5000, () => console.log('Running on port 5000'));
 
 //curl --request POST --url "https://stripeexperiments.onrender.com/webhook" --header "Content-Type: application/json" --data "{\"param1\":\"param1\",\"param2\":\"two\"}"
