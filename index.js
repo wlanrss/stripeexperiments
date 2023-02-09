@@ -47,6 +47,7 @@ app.get("/",(rep,res) =>{
   let event;
   //const reqBuffer = await buffer(request)
   //console.log("webhook:",request.rawBody)
+  console.log("sig:",sig)
   
   try {
    // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
