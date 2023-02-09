@@ -51,14 +51,14 @@ app.get("/",(rep,res) =>{
   //console.log("sig:",sig)
   
   try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+   // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
    
    //event = stripe.webhooks.constructEvent(reqBuffer, sig, endpointSecret);
    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret);
    
   } catch (err) {
     console.log("err:",err)
-    console.log("sig:",sig)
+    /*console.log("sig:",sig)
     //console.log("raw",request.body)
     //console.log("rawBody",request.rawBody)
     var sigs = sig.split(",");
@@ -71,7 +71,7 @@ app.get("/",(rep,res) =>{
     var hmac = crypto.createHmac('sha256', endpointSecret);
     var signedMsg = hmac.update(szPayload);
     console.log("MsgSig:"+signedMsg.digest('hex'))
-    console.log("endSec:"+endpointSecret)
+    console.log("endSec:"+endpointSecret)*/
 
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
@@ -106,7 +106,7 @@ app.get("/",(rep,res) =>{
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  //console.log("event:",event.data.object)
+  console.log("event:",event.data.object)
   // Return a 200 response to acknowledge receipt of the event
   //response.send();
   response.status(200).json({ 'msg': 'success','data':event.data.object })
