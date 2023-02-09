@@ -58,6 +58,7 @@ app.get("/",(rep,res) =>{
   } catch (err) {
     console.log("err:",err)
     console.log("sig:",sig)
+    console.log("raw",request.rawBody)
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
