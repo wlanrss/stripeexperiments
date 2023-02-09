@@ -47,10 +47,10 @@ app.get("/",(rep,res) =>{
   let event;
   //const reqBuffer = await buffer(request)
   //console.log("webhook:",request.rawBody)
-  console.log("sig:",sig)
+  //console.log("sig:",sig)
   
   try {
-   // event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
    
    //event = stripe.webhooks.constructEvent(reqBuffer, sig, endpointSecret);
    event = stripe.webhooks.constructEvent(request.rawBody, sig, endpointSecret);
@@ -58,8 +58,16 @@ app.get("/",(rep,res) =>{
   } catch (err) {
     console.log("err:",err)
     console.log("sig:",sig)
-    console.log("raw",request.body)
-    console.log("rawBody",request.rawBody)
+    //console.log("raw",request.body)
+    //console.log("rawBody",request.rawBody)
+    var sigs = sig.split(",");
+    var ts = sigs[0].split("=")
+    var signed = sigs[1].split("=")
+    console.log("timestamp:"+ts[1])
+    console.log("timestamp:"+signed[1])
+    var szPayload = ts[1]+"."+request.rawBody;
+    console.log("msgToSign:"+szPayload)
+
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }

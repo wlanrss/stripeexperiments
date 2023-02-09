@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/wlanrss/stripeexperiments#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "micro": "^10.0.1",
