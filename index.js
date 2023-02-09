@@ -71,6 +71,7 @@ app.get("/",(rep,res) =>{
     var hmac = crypto.createHmac('sha256', endpointSecret);
     var signedMsg = hmac.update(szPayload);
     console.log("MsgSig:"+signedMsg.digest('hex'))
+    console.log("endSec:"+endpointSecret)
 
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
