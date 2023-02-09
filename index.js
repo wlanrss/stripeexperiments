@@ -113,7 +113,7 @@ app.get("/",(rep,res) =>{
 
 
 
-console.log("Version 2.3")
+console.log("Version hand signed msg")
 app.listen(5000, () => console.log('Running on port 5000'));
 
 //curl --request POST --url "https://stripeexperiments.onrender.com/webhook" --header "Content-Type: application/json" --data "{\"param1\":\"param1\",\"param2\":\"two\"}"
