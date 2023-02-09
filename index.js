@@ -17,6 +17,7 @@ var strsec = process.env.str_sec;
 
 const stripe = require('stripe')(strsec);
 const express = require('express');
+var crypto = require('crypto');
 const app = express();
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
@@ -64,9 +65,12 @@ app.get("/",(rep,res) =>{
     var ts = sigs[0].split("=")
     var signed = sigs[1].split("=")
     console.log("timestamp:"+ts[1])
-    console.log("timestamp:"+signed[1])
+    console.log("signed:"+signed[1])
     var szPayload = ts[1]+"."+request.rawBody;
-    console.log("msgToSign:"+szPayload)
+    //console.log("msgToSign:"+szPayload)
+    var hmac = crypto.createHmac('sha256', endpointSecret);
+    var signedMsg = hmac.update(szPayload);
+    console.log("signedMsg:"+signedMsg.digest('hex'))
 
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
