@@ -60,18 +60,18 @@ app.get("/",(rep,res) =>{
     console.log("err:",err)
     /*console.log("sig:",sig)
     //console.log("raw",request.body)
-    //console.log("rawBody",request.rawBody)
+    //console.log("rawBody",request.rawBody)*/
     var sigs = sig.split(",");
     var ts = sigs[0].split("=")
     var signed = sigs[1].split("=")
-    console.log("timestamp:"+ts[1])
+    //console.log("timestamp:"+ts[1])
     console.log("signed:"+signed[1])
     var szPayload = ts[1]+"."+request.rawBody;
     //console.log("msgToSign:"+szPayload)
     var hmac = crypto.createHmac('sha256', endpointSecret);
     var signedMsg = hmac.update(szPayload);
     console.log("MsgSig:"+signedMsg.digest('hex'))
-    console.log("endSec:"+endpointSecret)*/
+    console.log("endSec:"+endpointSecret)
 
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
