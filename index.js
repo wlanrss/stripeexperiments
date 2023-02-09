@@ -25,13 +25,13 @@ var endsec = process.env.end_sec;
 //var endsec = "whsec_b0c25288540378e3bc3c1615f3fbdfc777fe65906a23b47c959dc4000a90f21e"
 const endpointSecret = endsec
 
-app.use(express.json({
+/*app.use(express.json({
   limit: '5mb',
   verify: (req, res, buf) => {
     req.rawBody = buf.toString();    
   }
 }));
-
+*/
 
 
 
