@@ -90,7 +90,7 @@ app.get("/",(rep,res) =>{
       console.log(`Unhandled event type ${event.type}`);
   }
 
-  console.log("event:",event.data.object)
+  //console.log("event:",event.data.object)
   // Return a 200 response to acknowledge receipt of the event
   //response.send();
   response.status(200).json({ 'msg': 'success','data':event.data.object })
