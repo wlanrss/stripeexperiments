@@ -59,7 +59,7 @@ app.get("/",(rep,res) =>{
     console.log("err:",err)
     console.log("sig:",sig)
     console.log("raw",request.body)
-    console.log("rawBody",req.rawBody)
+    console.log("rawBody",request.rawBody)
     response.status(400).send(`Webhook Error: ${err.message}`);
     return;
   }
